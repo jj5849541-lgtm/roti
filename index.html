@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Dessert Box</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .hokben-red {
+            background-color: #e21e26;
+        }
+        .hokben-yellow {
+            background-color: #ffcc00;
+        }
+        .hokben-yellow-text {
+            color: #eab308;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Main Navigation Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center max-w-6xl">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-16 h-16 rounded-full border-2 border-orange-400 flex items-center justify-center shadow-md overflow-hidden relative bg-white">
+                    <img src="Designer.png" alt="Sweet Dessert Box Logo" class="w-full h-full object-cover">
+                </div>
+                <div class="hidden sm:block">
+                    <h1 class="text-xl font-black text-red-600 tracking-wider">Sweet Dessert Box Mataram</h1>
+                    <p class="text-xs text-gray-500">Coklat • Matcha • Tiramisu</p>
+                </div>
+            </div>
+
+            <!-- Right Nav Actions -->
+            <div class="flex items-center space-x-4">
+                <!-- Cart Button -->
+                <button onclick="openCartModal()" class="relative bg-red-600 text-white px-4 py-2 rounded-full font-semibold flex items-center space-x-2 shadow hover:bg-red-700 transition">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-yellow-400 text-red-900 font-bold text-xs w-6 h-6 rounded-full flex items-center justify-center shadow border-2 border-white">0</span>
+                    <span class="hidden md:inline text-sm">Keranjang</span>
+                </button>
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700 p-2 text-xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Promotional Banner Section -->
+    <section class="container mx-auto px-4 py-6 max-w-6xl">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-r from-amber-900 via-orange-900 to-red-900 text-white">
+            <div class="absolute inset-0 opacity-35 bg-cover bg-center" style="background-image: url('WhatsApp Image 2026-10-22 at 06.33.00.jpeg');"></div>
+
+            <div class="relative z-10 p-4 sm:p-6 md:p-8 lg:p-10 flex flex-row items-center justify-between gap-3 sm:gap-4 min-h-[220px]">
+                <div class="w-[58%] text-left">
+                    <span class="bg-red-600 text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Best Seller</span>
+                    <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold mt-2 text-yellow-300 drop-shadow leading-tight">Sweet Dessert Box</h2>
+                    <p class="text-[11px] sm:text-sm md:text-base font-semibold text-amber-100 mt-1">Coklat • Matcha • Tiramisu</p>
+                    <p class="text-[10px] sm:text-xs md:text-sm text-gray-200 mt-2 max-w-[220px] sm:max-w-[260px] md:max-w-[300px]">Box manis dengan rasa yang lembut, creamy, dan cocok untuk acara, hampers, atau camilan santai.</p>
+                    <div class="mt-3 inline-block bg-yellow-400 text-red-900 font-black px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl shadow text-[10px] sm:text-xs md:text-sm">
+                        Harga <span class="font-bold">Rp 25.000 / box</span>
+                    </div>
+                    <div class="mt-2 inline-block bg-white text-red-700 font-black px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl shadow text-[10px] sm:text-xs md:text-sm">
+                        PROMO: BELI 2 <span class="font-bold">Rp 45.000</span>
+                    </div>
+                </div>
+
+                <div class="w-[42%] flex justify-end">
+                    <img src="WhatsApp Image 2026-10-22 at 06.33.00.jpeg" alt="Sweet Dessert Box" class="w-full max-w-[220px] sm:max-w-[260px] h-[130px] sm:h-[160px] md:h-[200px] object-cover rounded-2xl shadow-2xl border-4 border-yellow-400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECOMMENDATION SECTION -->
+    <main class="container mx-auto px-4 py-8 max-w-6xl">
+        <div class="text-center mb-8">
+            <h3 class="text-2xl md:text-3xl font-black text-red-600 tracking-wider uppercase underline decoration-yellow-400 decoration-4 underline-offset-8">Varian Rasa</h3>
+            <p class="text-gray-500 text-sm mt-2">Coklat, Matcha, dan Tiramisu siap dikemas untuk take away</p>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Products will be injected via JS -->
+        </div>
+    </main>
+
+    <!-- QRIS PAYMENT SECTION -->
+    <section class="container mx-auto px-4 py-10 max-w-6xl">
+        <div class="bg-white rounded-3xl shadow-lg border border-red-100 overflow-hidden">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-5/12 bg-gradient-to-br from-red-50 to-yellow-50 p-6 md:p-10 flex justify-center">
+                    <div class="bg-white border-4 border-red-200 rounded-3xl p-4 shadow-md">
+                        <img src="WhatsApp Image 2026-10-22 at 06.33.01.jpeg" alt="Poto Kamu" class="w-52 h-52 object-cover rounded-2xl border-2 border-red-100">
+                    </div>
+                </div>
+                <div class="w-full md:w-7/12 p-6 md:p-10">
+                    <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 text-xs font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-qrcode"></i>
+                        <span>QRIS</span>
+                    </div>
+                    <h3 class="mt-4 text-2xl md:text-3xl font-black text-red-700">Pembayaran via QRIS</h3>
+                    <p class="mt-3 text-gray-600 text-sm md:text-base leading-relaxed">
+                        Silakan scan QRIS di samping untuk pembayaran Sweet Dessert Box. Paket kami siap dikirim dalam kemasan take away.
+                    </p>
+
+                    <div class="mt-6 flex flex-wrap gap-3 text-xs font-bold text-gray-700">
+                        <span class="bg-yellow-100 text-yellow-900 px-3 py-2 rounded-full">Dana</span>
+                        <span class="bg-red-100 text-red-700 px-3 py-2 rounded-full">ovo</span>
+                        <span class="bg-emerald-100 text-emerald-700 px-3 py-2 rounded-full">shoope</span>
+                        <span class="bg-blue-100 text-blue-700 px-3 py-2 rounded-full">gopay</span>
+                    </div>
+
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Address -->
+    <footer class="bg-gray-900 text-white py-8 px-4 mt-12 text-center">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-lg font-bold text-yellow-400 mb-2">Alamat</h2>
+            <p class="text-sm md:text-base text-gray-300">
+                Jl. Udayana Mataram, Dasan Agung, Kec. Selaparang, Kota Mataram, Nusa Tenggara Bar. 83125
+            </p>
+            <div class="mt-6">
+                <h2 class="text-lg font-bold text-yellow-400 mb-2">Hubungi Kami</h2>
+                <a href="tel:085956001964" class="text-sm md:text-base text-gray-300 hover:text-white">
+                    <i class="fa-solid fa-phone mr-2"></i>085956001964
+                </a>
+            </div>
+            <div class="mt-6">
+                <h2 class="text-lg font-bold text-yellow-400 mb-2">Media Sosial</h2>
+                <p class="text-sm md:text-base text-gray-300">
+                    <i class="fa-brands fa-instagram mr-2"></i>Instagram: sweet dessert box mataram
+                </p>
+                <p class="mt-1 text-sm md:text-base text-gray-300">
+                    <i class="fa-brands fa-tiktok mr-2"></i>TikTok: sweet dessert box mataram
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART MODAL -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+            <div class="flex justify-between items-center border-b pb-4 mb-4">
+                <h3 class="text-xl font-bold text-red-600 flex items-center space-x-2">
+                    <i class="fa-solid fa-basket-shopping"></i> <span>Keranjang Belanja Anda</span>
+                </h3>
+                <button onclick="closeCartModal()" class="text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
+            </div>
+            <div id="cart-items-container" class="max-h-60 overflow-y-auto divide-y divide-gray-100 mb-4">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="border-t pt-4 flex justify-between items-center mb-6">
+                <span class="font-bold text-gray-600">Total Pembayaran:</span>
+                <span id="cart-total-price" class="text-xl font-extrabold text-red-600">Rp 0</span>
+            </div>
+            <div class="flex space-x-3">
+                <button onclick="closeCartModal()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 rounded-xl transition">Lanjut Belanja</button>
+                <button onclick="checkoutCart()" class="flex-1 hokben-yellow hover:bg-amber-400 text-red-900 font-extrabold py-3 rounded-xl shadow transition">Checkout Sekarang</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="detail-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative text-center">
+            <button onclick="closeDetailModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
+            <img id="detail-img" src="" alt="Menu Image" class="w-full h-48 object-cover rounded-xl mb-4 shadow">
+            <span id="detail-badge" class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase mb-2"></span>
+            <h3 id="detail-title" class="text-2xl font-black text-gray-800 mb-1"></h3>
+            <p id="detail-price" class="text-lg font-extrabold text-red-600 mb-4"></p>
+            <p id="detail-desc" class="text-sm text-gray-600 mb-6 leading-relaxed"></p>
+            <button id="detail-add-btn" class="w-full bg-yellow-400 hover:bg-yellow-500 text-red-900 font-extrabold py-3 rounded-xl shadow transition">
+                + Order Sekarang
+            </button>
+        </div>
+    </div>
+
+    <!-- CUSTOM TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-gray-900 text-white px-5 py-3 rounded-xl shadow-2xl transform translate-y-32 opacity-0 transition-all duration-300 z-50 flex items-center space-x-3">
+        <i class="fa-solid fa-circle-check text-green-400 text-xl"></i>
+        <span id="toast-message" class="text-sm font-semibold">Item berhasil ditambahkan!</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Data Produk Rekomendasi HokBen
+        const products = [
+            {
+                id: 1,
+                name: "Sweet Dessert Box - Coklat",
+                price: 25000,
+                formattedPrice: "Rp. 25.000",
+                image: "WhatsApp Image 2026-10-22 at 06.33.01 (2).jpeg",
+                badge: "Best",
+                description: "Dessert box dengan rasa coklat lembut, creamy, dan cocok untuk camilan ringan maupun hadiah."
+            },
+            {
+                id: 2,
+                name: "Sweet Dessert Box - Matcha",
+                price: 25000,
+                formattedPrice: "Rp. 25.000",
+                image: "WhatsApp Image 2026-10-22 at 06.33.01 (1).jpeg",
+                badge: "Best",
+                description: "Varian matcha yang lembut dengan sensasi rasa khas teh hijau dan tekstur yang halus."
+            },
+            {
+                id: 3,
+                name: "Sweet Dessert Box - Tiramisu",
+                price: 25000,
+                formattedPrice: "Rp. 25.000",
+                image: "WhatsApp Image 2026-10-22 at 06.33.02.jpeg",
+                badge: "Best",
+                description: "Tiramisu yang creamy dengan lapisan rasa kopi dan kelezatan yang khas dan memanjakan lidah."
+            }
+        ];
+
+        let cart = [];
+
+        // Render Product Cards
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-5 flex flex-col justify-between border border-gray-100 relative overflow-hidden group";
+
+                let badgeHtml = product.badge ? `<div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider">${product.badge}</div>` : '';
+
+                card.innerHTML = `
+                    ${badgeHtml}
+                    <div class="mb-4 overflow-hidden rounded-xl bg-gray-50 flex items-center justify-center">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://placehold.co/300x200/e21e26/ffffff?text=HokBen+Menu'" class="h-40 object-contain group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="text-center mb-4">
+                        <h4 class="font-black text-gray-800 text-base mb-1 tracking-wide">${product.name}</h4>
+                        <p class="text-red-600 font-extrabold text-lg">${product.formattedPrice}</p>
+                    </div>
+                    <div class="flex items-center space-x-2 pt-2 border-t border-gray-100">
+                        <button onclick="showDetails(${product.id})" class="flex-1 text-red-600 border border-red-600 hover:bg-red-50 py-2 rounded-xl text-xs font-bold transition">Details</button>
+                        <button onclick="addToCart(${product.id})" class="flex-1 hokben-yellow hover:bg-amber-400 text-red-900 py-2 rounded-xl text-xs font-extrabold shadow transition flex items-center justify-center space-x-1">
+                            <i class="fa-solid fa-plus"></i> <span>Order</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Add to Cart Logic
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartBadge();
+            showToast(`${product.name} berhasil ditambahkan ke keranjang!`);
+        }
+
+        // Update Cart Badge
+        function updateCartBadge() {
+            const badge = document.getElementById('cart-badge');
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.textContent = totalQty;
+        }
+
+        // Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+            
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 3000);
+        }
+
+        // Open/Close Cart Modal
+        function openCartModal() {
+            const container = document.getElementById('cart-items-container');
+            const totalPriceEl = document.getElementById('cart-total-price');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-gray-400 text-sm font-medium"><i class="fa-solid fa-basket-shopping text-3xl mb-2 text-gray-300 block"></i>Keranjang belanja Anda masih kosong.</div>`;
+                totalPriceEl.textContent = 'Rp 0';
+            } else {
+                let grandTotal = 0;
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.qty;
+                    grandTotal += itemTotal;
+
+                    const row = document.createElement('div');
+                    row.className = "py-3 flex justify-between items-center";
+                    row.innerHTML = `
+                        <div>
+                            <h5 class="font-bold text-sm text-gray-800">${item.name}</h5>
+                            <p class="text-xs text-gray-500">${item.formattedPrice} x ${item.qty}</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="font-extrabold text-red-600 text-sm">Rp ${itemTotal.toLocaleString('id-ID')}</span>
+                            <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-xs font-bold px-2 py-1 bg-red-50 rounded"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    `;
+                    container.appendChild(row);
+                });
+                totalPriceEl.textContent = `Rp ${grandTotal.toLocaleString('id-ID')}`;
+            }
+
+            document.getElementById('cart-modal').classList.remove('hidden');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartBadge();
+            openCartModal();
+        }
+
+        // Product Details Modal
+        function showDetails(productId) {
+            const product = products.find(p => p.id === productId);
+            document.getElementById('detail-img').src = product.image;
+            document.getElementById('detail-title').textContent = product.name;
+            document.getElementById('detail-price').textContent = product.formattedPrice;
+            document.getElementById('detail-desc').textContent = product.description;
+            
+            const badgeEl = document.getElementById('detail-badge');
+            if (product.badge) {
+                badgeEl.textContent = product.badge;
+                badgeEl.className = "inline-block bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-2";
+            } else {
+                badgeEl.textContent = "";
+                badgeEl.className = "hidden";
+            }
+
+            document.getElementById('detail-add-btn').onclick = function() {
+                addToCart(product.id);
+                closeDetailModal();
+            };
+
+            document.getElementById('detail-modal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detail-modal').classList.add('hidden');
+        }
+
+        // Checkout Action
+        function checkoutCart() {
+            if (cart.length === 0) {
+                alertAction('Keranjang masih kosong, silakan pilih menu terlebih dahulu.');
+                return;
+            }
+            alertAction('Terima kasih! Pesanan Anda sedang diproses ke sistem pembayaran HokBen.');
+            cart = [];
+            updateCartBadge();
+            closeCartModal();
+        }
+
+        // Safe replacement for alert()
+        function alertAction(msg) {
+            showToast(msg);
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initialize App on Window Load
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
